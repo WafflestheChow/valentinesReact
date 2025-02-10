@@ -57,16 +57,23 @@ body {
 }
 
 .final-message {
+    text-align: center; /* Center everything */
     font-size: 2rem;
     color: white;
-    text-align: center;
-    margin-top: 50px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column; /* Stack image above text */
+    align-items: center; /* Center content */
+    justify-content: center;
+    height: 100vh; /* Take full screen height */
 }
 
 .final-gif {
-    width: 250px; /* Adjust size as needed */
-    height: auto;
-    margin-top: 20px;
-    border-radius: 10px; /* Rounded corners for aesthetics */
+    width: 30%; /* Adjust size relative to screen */
+    max-width: 300px; /* Prevents it from becoming too large */
+    height: auto; /* Keeps aspect ratio */
+    margin-bottom: 20px; /* Space between GIF and text */
+    border-radius: 10px;
 }
+
 
