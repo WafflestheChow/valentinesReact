@@ -34,10 +34,17 @@ function App() {
     const handleNoClick = () => {
         if (messageIndex < messages.length - 1) {
             setHasMoved(true);
-            setPositionIndex((prev) => (prev + 1) % positions.length);
             setMessageIndex((prev) => prev + 1);
+
+            // Generate a new position with different movement patterns
+            setPositionIndex((prev) => {
+                const newPosition = {
+                    top: `${Math.min(80, Math.max(10, parseInt(positions[prev].top) + (Math.random() * 20 - 10)))}%`,
+                    left: `${Math.min(80, Math.max(10, parseInt(positions[prev].left) + (Math.random() * 20 - 10)))}%`
+                };
+                return positions.push(newPosition) - 1; // Store new dynamic position
+            });
         } else {
-            setIsYesClicked(false); // ✅ Make sure it's not set to Yes
             setShowFinalMessage(true);
         }
     };
@@ -71,7 +78,7 @@ function App() {
 
                     <h1>
                         {isYesClicked
-                            ? "Yay! You made my day! 💖🥰"
+                            ? "Well I knew you were going to click Yes anyways! 💖🥰"
                             : "Fine... I didn't want to be your Valentine anyways! 😭😭😭"}
                     </h1>
                     <button className="restart-button" onClick={handleRestart}>
@@ -80,6 +87,11 @@ function App() {
                 </div>
             ) : (
                 <>
+                    <img
+                        src = "https://media1.tenor.com/m/YciMs8-7iKAAAAAC/modcheck-confuse.gif"
+                        alt = "Question"
+                        className = "valentine-image"
+                        />
                     <h1 className="question">Hi Josie! Will you be my Valentine? 💖</h1>
                     <div className="button-container">
                         <button
