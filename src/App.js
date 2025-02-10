@@ -8,12 +8,11 @@ const messages = [
     "Think again Chunks!",
     "Don't break my heart 😢",
     "You're making a mistake!",
-    "Last chance!!!", // Second to last message
+    "Last chance!!!",
 ];
 
 const finalMessage = "Fine... I didn't want to be your Valentine anyways! 😭😭😭";
 
-// Predefined safe positions
 const positions = [
     { top: "50%", left: "70%" },
     { top: "30%", left: "30%" },
@@ -35,12 +34,18 @@ function App() {
             setPositionIndex((prev) => (prev + 1) % positions.length);
             setMessageIndex((prev) => prev + 1);
         } else {
-            // Once "Last chance!!!" is clicked, show the final message
             setShowFinalMessage(true);
         }
     };
 
-    // Load Tenor Embed Script when the final message is displayed
+    // Function to reset the app to the beginning
+    const handleRestart = () => {
+        setPositionIndex(0);
+        setMessageIndex(0);
+        setShowFinalMessage(false);
+        setHasMoved(false);
+    };
+
     useEffect(() => {
         if (showFinalMessage) {
             const script = document.createElement("script");
@@ -54,19 +59,15 @@ function App() {
         <div className="container">
             {showFinalMessage ? (
                 <div className="final-message">
+                    <img
+                        src="https://media.tenor.com/oqgO-xIbYXIAAAAM/sad-crying.gif"
+                        alt="Crying Penguin"
+                        className="final-gif"
+                    />
                     <h1>{finalMessage}</h1>
-                    <div
-                        className="tenor-gif-embed"
-                        data-postid="8932804926861292727"
-                        data-share-method="host"
-                        data-aspect-ratio="1"
-                        data-width="250px"
-                    >
-                        <a href="https://tenor.com/view/sad-crying-cry-penguin-tears-gif-8932804926861292727">
-                            Sad Crying GIF
-                        </a>
-                        from <a href="https://tenor.com/search/sad-gifs">Sad GIFs</a>
-                    </div>
+                    <button className="restart-button" onClick={handleRestart}>
+                        Start Over 🔄
+                    </button>
                 </div>
             ) : (
                 <>
@@ -76,12 +77,10 @@ function App() {
                             Yes 💕
                         </button>
                         {messageIndex === messages.length - 1 ? (
-                            // Final "No" button - no movement, just clickable
                             <button className="no-button" onClick={handleNoClick}>
                                 {messages[messageIndex]}
                             </button>
                         ) : (
-                            // Moving "No" button until the last message
                             <motion.button
                                 className="no-button"
                                 onClick={handleNoClick}
