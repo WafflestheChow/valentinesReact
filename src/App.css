@@ -6,6 +6,7 @@ body {
     background-color: pink;
     font-family: Arial, sans-serif;
     overflow: hidden; /* Prevent scrolling */
+    margin: 0;
 }
 
 .container {
@@ -18,10 +19,10 @@ body {
 }
 
 .button-container {
-    display: flex; /* Align side by side */
-    justify-content: center; /* Center them */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px; /* Add space between buttons */
+    gap: 20px;
     margin-top: 20px;
     position: relative;
 }
@@ -32,7 +33,7 @@ body {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    min-width: 120px; /* Ensure button size remains reasonable */
+    min-width: 120px;
     min-height: 50px;
     text-align: center;
 }
@@ -51,28 +52,27 @@ body {
     position: relative;
 }
 
-.love-message {
-    font-size: 2rem;
-    color: white;
+.no-button:hover {
+    transform: scale(1.1);
 }
 
 .final-message {
-    text-align: center; /* Center everything */
+    text-align: center;
     font-size: 2rem;
-    color: red;
+    color: white;
     font-weight: bold;
     display: flex;
-    flex-direction: column; /* Stack image above text */
-    align-items: center; /* Center content */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    height: 100vh; /* Take full screen height */
+    height: 100vh;
 }
 
 .final-gif {
-    width: 30%; /* Adjust size relative to screen */
-    max-width: 300px; /* Prevents it from becoming too large */
-    height: auto; /* Keeps aspect ratio */
-    margin-bottom: 20px; /* Space between GIF and text */
+    width: 30%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
     border-radius: 10px;
 }
 
